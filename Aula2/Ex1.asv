@@ -1,0 +1,20 @@
+clc
+clear all
+close all
+
+
+P1 = [-1 0 0 0]';
+P2 = [1 0 0 0]';
+P3 = [0 2 0 0]';
+A1 = [P1 P2 P3];
+
+h1 = fill3(A1(1,:),A1(2,:),A1(3,:), 'b');
+
+hold on
+x = 10 ;
+y = 10 ;
+z = 10;
+
+N = 100;
+
+a = linspace(0, 4*pi, N);

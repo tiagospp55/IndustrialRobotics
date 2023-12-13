@@ -1,0 +1,44 @@
+clear
+close all
+clc
+
+P1 = [0.5 0 0 1]';
+P_1 = [0.5 2 0 1]';
+P_2 = [1 2 0 1]';
+P4 = [0 3 0 1]';
+P5 = [-1 2 0 1]';
+P6 = [-0.5 2 0 1]';
+P7 = [-0.5 0 0 1]';
+
+P = [P1 P_1 P_2 P4 P5 P6 P7];
+h1 = fill3(P(1,:), P(2,:), P(3,:), 'm');
+
+view()
+hold on
+xlabel("X");
+ylabel("Y");
+zlabel("Z");
+axis equal
+
+P_1 = rotz(pi/2) * rotx(pi/2)  * P ;
+h2 = fill3(P_1(1,:), P_1(2,:), P_1(3,:), 'y');
+ 
+P_2 = rotz(3*(pi/2)) * roty(pi/2) * P;
+h3 = fill3(P_2(1,:), P_2(2,:), P_2(3,:), 'r');
+
+N = 1000;
+a = linspace(0, 20*pi, N);
+
+disp("A")
+for i = 1:N
+    P1 = rotx(a(i)) * P;
+    set(h1, 'XData', P1(1,:), 'YData', P1(2,:), 'ZData', P1(3,:));
+    
+    P_2 = roty(a(i)) * P;
+    set(h2, 'XData', P_2(1,:), 'YData', P_2(2,:), 'ZData', P_2(3,:));
+    
+    P_3 = rotx(a(i)) * P;
+    set(h3, 'XData', P_3(1,:), 'YData', P_3(2,:), 'ZData', P_3(3,:));
+    
+    pause(0.1);
+end

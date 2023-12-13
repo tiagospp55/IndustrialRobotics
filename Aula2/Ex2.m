@@ -1,0 +1,30 @@
+clear
+close all
+clc
+
+P1 = [0.5 0 0 1]';
+P2 = [0.5 2 0 1]';
+P3 = [1 2 0 1]';
+P4 = [0 3 0 1]';
+P5 = [-1 2 0 1]';
+P6 = [-0.5 2 0 1]';
+P7 = [-0.5 0 0 1]';
+
+P = [P1 P2 P3 P4 P5 P6 P7];
+
+
+
+h1 = fill3(P(1,:), P(2,:), P(3,:), 'm');
+hold on
+grid on
+view (135,30)
+xlabel("X");
+ylabel("Y");
+zlabel("Z");
+axis([-5 5 -5 5 -5 5])
+P2 = rotz(pi/2) * rotx(pi/2)  * P ;
+h2 = fill3(P2(1,:), P2(2,:), P2(3,:), 'y');
+ 
+P3 = rotz(3*(pi/2)) * roty(pi/2) * P
+h3 = fill3(P3(1,:), P3(2,:), P3(3,:), 'r');
+
